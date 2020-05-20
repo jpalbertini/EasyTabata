@@ -1,15 +1,21 @@
-﻿using System;
+﻿using EasyTabata.Models;
+using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyTabata.Services
 {
-    public interface IDataStore<T>
+    interface IDataStore
     {
-        Task<bool> AddItemAsync(T item);
-        Task<bool> UpdateItemAsync(T item);
-        Task<bool> DeleteItemAsync(string id);
-        Task<T> GetItemAsync(string id);
-        Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false);
+        Task<bool> AddTabataAsync(Tabata item);
+
+        Task<bool> UpdateTabataAsync(Tabata item);
+
+        Task<bool> DeleteTabataAsync(string title);
+
+        Task<Tabata> GetTabataAsync(string title);
+
+        Task<IEnumerable<Tabata>> GetTabatasAsync();
     }
 }

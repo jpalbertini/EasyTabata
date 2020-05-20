@@ -1,7 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using EasyTabata.Services;
+﻿using Xamarin.Forms;
 using EasyTabata.Views;
 
 namespace EasyTabata
@@ -13,7 +10,6 @@ namespace EasyTabata
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new MainPage();
         }
 
