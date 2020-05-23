@@ -5,13 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="EasyTabata.Views.SettingsView">
-    <StackLayout Margin="4,0,4,0">
-        <Grid VerticalOptions="Center">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-            </Grid.RowDefinitions>
-            <Label VerticalTextAlignment="Center" Text="Enable Sound:" />
-            <Switch IsToggled="{Binding EnableSound, Mode=TwoWay}" ThumbColor="{StaticResource NavigationPrimary}"/>
-        </Grid>
-    </StackLayout>
+
+    <TableView Intent="Settings">
+        <TableRoot>
+            <TableSection Title="Events">
+                <SwitchCell Text="Enable Sound" On="{Binding EnableSound, Mode=TwoWay}"/>
+            </TableSection>
+        </TableRoot>
+    </TableView>
 </ContentPage>

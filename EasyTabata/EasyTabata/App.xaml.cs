@@ -1,5 +1,6 @@
 ﻿using Xamarin.Forms;
 using EasyTabata.Views;
+using EasyTabata.Services;
 
 namespace EasyTabata
 {
@@ -10,7 +11,8 @@ namespace EasyTabata
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            DependencyService.Register<MockDataStore>();
+            MainPage = new NavigationPage(new TabataListView());
         }
 
         protected override void OnStart()

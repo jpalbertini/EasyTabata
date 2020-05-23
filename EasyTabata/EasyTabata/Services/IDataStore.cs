@@ -12,9 +12,9 @@ namespace EasyTabata.Services
 
         Task<bool> UpdateTabataAsync(Tabata item);
 
-        Task<bool> DeleteTabataAsync(string title);
+        Task<bool> DeleteTabataAsync(Guid id);
 
-        Task<Tabata> GetTabataAsync(string title);
+        Task<Tabata> GetTabataAsync(Guid id);
 
         Task<IEnumerable<Tabata>> GetTabatasAsync();
     }
