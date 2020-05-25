@@ -17,6 +17,23 @@ namespace EasyTabata.Models
             Minutes = minutes;
             Seconds = seconds;
         }
+        public void Reset()
+        {
+            Minutes = 0;
+            Seconds = 0;
+        }
+        public void AddSeconds(int seconds)
+        {
+            int total = TotalSeconds + seconds;
+            Minutes = total / 60;
+            Seconds = total % 60;
+        }
+        public void RemoveSeconds(int seconds)
+        {
+            int total = TotalSeconds - seconds;
+            Minutes = total / 60;
+            Seconds = total % 60;
+        }
 
         static public Duration FromSeconds(int seconds)
         {
@@ -26,10 +43,36 @@ namespace EasyTabata.Models
         {
             return Duration.FromSeconds(lhs.TotalSeconds + rhs.TotalSeconds);
         }
+        public static Duration operator -(Duration lhs, Duration rhs)
+        {
+            return Duration.FromSeconds(lhs.TotalSeconds - rhs.TotalSeconds);
+        }
+        public static bool operator >(Duration lhs, Duration rhs)
+        {
+            return lhs.TotalSeconds > rhs.TotalSeconds;
+        }
+        public static bool operator <(Duration lhs, Duration rhs)
+        {
+            return lhs.TotalSeconds < rhs.TotalSeconds;
+        }
+        public static bool operator ==(Duration lhs, Duration rhs)
+        {
+            return lhs.TotalSeconds == rhs.TotalSeconds;
+        }
+        public static bool operator !=(Duration lhs, Duration rhs)
+        {
+            return lhs.TotalSeconds != rhs.TotalSeconds;
+        }
 
         public override string ToString()
         {
             return $"{Minutes}:{Seconds}";
+        }
+
+        public void CopyFrom(Duration other)
+        {
+            Minutes = other.Minutes;
+            Seconds = other.Seconds;
         }
     }
 }

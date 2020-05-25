@@ -16,15 +16,17 @@ namespace EasyTabata.Views
     {
         public Duration TimeValue
         {
-            get { 
-                return (Duration)GetValue(TimeValueProperty); 
-            }
-            set {
-                if (TimeValue != value)
-                    SetValue(TimeValueProperty, value);
-            }
+            get { return (Duration)GetValue(TimeValueProperty); }
+            set { SetValue(TimeValueProperty, value); }
         }
         public static readonly BindableProperty TimeValueProperty = BindableProperty.Create("TimeValue", typeof(Duration), typeof(TimeSelector), new Duration());
+
+        public bool Editable
+        {
+            get { return (bool)GetValue(EditableProperty); }
+            set { SetValue(EditableProperty, value); }
+        }
+        public static readonly BindableProperty EditableProperty = BindableProperty.Create("Editable", typeof(bool), typeof(TimeSelector), true);
 
         public TimeSelector()
         {

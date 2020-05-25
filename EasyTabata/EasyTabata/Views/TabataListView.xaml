@@ -8,7 +8,7 @@
              x:Name="ContentPage"
              Title="Tabata List">
 
-    <ListView ItemsSource="{Binding Items}" RowHeight="40" Margin="10">
+    <ListView ItemsSource="{Binding Items}" RowHeight="40" Margin="10" ItemSelected="ListView_ItemSelected">
         <d:ListView.ItemsSource>
             <x:Array Type="{x:Type x:String}">
                 <x:String>Item 1</x:String>

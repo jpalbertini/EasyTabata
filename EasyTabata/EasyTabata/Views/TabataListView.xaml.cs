@@ -37,5 +37,12 @@ namespace EasyTabata.Views
             viewModel.updateItems();
 
         }
+
+        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var tabata = e.SelectedItem as Tabata;
+            var secondPage = new PlayingTabataView(tabata);
+            await Navigation.PushAsync(secondPage);
+        }
     }
 }

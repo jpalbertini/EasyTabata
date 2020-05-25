@@ -32,6 +32,13 @@ namespace EasyTabata.Views
             set { SetValue(MaximumValueProperty, value); }
         }
         public static readonly BindableProperty MaximumValueProperty = BindableProperty.Create("MaximumValue", typeof(int), typeof(NumberSelector));
+        public bool Editable
+        {
+            get { return (bool)GetValue(EditableProperty); }
+            set { SetValue(EditableProperty, value); }
+        }
+        public static readonly BindableProperty EditableProperty = BindableProperty.Create("Editable", typeof(bool), typeof(NumberSelector), true);
+
         public NumberSelector()
         {
             BindingContext = this;

@@ -7,15 +7,15 @@
              x:Class="EasyTabata.Views.NumberSelector"
              x:Name="NbSelector">
     
-    <ImageButton BackgroundColor="Transparent" Clicked="Plus_Clicked">
+    <ImageButton BackgroundColor="Transparent" Clicked="Plus_Clicked" IsVisible="{Binding Editable}">
         <ImageButton.Source>
             <FontImageSource  Glyph="&#xe148;" FontFamily="MaterialIcons" Size="32" Color="{StaticResource NavigationPrimary}"/>
         </ImageButton.Source>
     </ImageButton>
     
     <Label Text="{Binding Source={x:Reference NbSelector}, Path=BindingContext.CurrentValue}" HorizontalTextAlignment="Center"/>
-    
-    <ImageButton BackgroundColor="Transparent" Clicked="Minus_Clicked">
+
+    <ImageButton BackgroundColor="Transparent" Clicked="Minus_Clicked" IsVisible="{Binding Editable}">
         <ImageButton.Source>
             <FontImageSource  Glyph="&#xe15d;" FontFamily="MaterialIcons" Size="32" Color="{StaticResource NavigationPrimary}"/>
         </ImageButton.Source>

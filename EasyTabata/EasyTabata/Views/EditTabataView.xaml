@@ -13,36 +13,41 @@
                 <TableRoot>
                     <TableSection>
                         <EntryCell Label="Title" Placeholder="Title" Text="{Binding Title, Mode=TwoWay}"/>
-                        <TextCell Text="{Binding CompleteLength, StringFormat='Complete Length: {0}'}" TextColor="Black"/>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
+                            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="10">
                                 <Label Text="Preparation" VerticalTextAlignment="Center"/>
-                                <views:TimeSelector TimeValue="{Binding Source={x:Reference EditView}, Path=BindingContext.PreparationLength, Mode=TwoWay}" />
-                            </StackLayout>
+                                <views:TimeSelector TimeValue="{Binding Source={x:Reference EditView}, Path=BindingContext.PreparationLength, Mode=TwoWay}"/>
+                            </FlexLayout>
                         </ViewCell>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="Number of Rounds" VerticalTextAlignment="Center"/>
-                                <views:NumberSelector CurrentValue="{Binding Source={x:Reference EditView}, Path=BindingContext.RoundCount, Mode=TwoWay}" MinimumValue="0" MaximumValue="60"/>
-                            </StackLayout>
-                        </ViewCell>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="Number of Excercises" VerticalTextAlignment="Center"/>
-                                <views:NumberSelector CurrentValue="{Binding Source={x:Reference EditView}, Path=BindingContext.ExerciseCount, Mode=TwoWay}" MinimumValue="0" MaximumValue="60"/>
-                            </StackLayout>
-                        </ViewCell>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
+                            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="10">
                                 <Label Text="Work Duration" VerticalTextAlignment="Center"/>
                                 <views:TimeSelector TimeValue="{Binding Source={x:Reference EditView}, Path=BindingContext.WorkLength, Mode=TwoWay}" />
-                            </StackLayout>
+                            </FlexLayout>
                         </ViewCell>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
+                            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="10">
                                 <Label Text="Rest Duration" VerticalTextAlignment="Center"/>
                                 <views:TimeSelector TimeValue="{Binding Source={x:Reference EditView}, Path=BindingContext.RestLength, Mode=TwoWay}" />
-                            </StackLayout>
+                            </FlexLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="10">
+                                <Label Text="Rest between rounds" VerticalTextAlignment="Center"/>
+                                <views:TimeSelector TimeValue="{Binding Source={x:Reference EditView}, Path=BindingContext.RestBetweenRoundLength, Mode=TwoWay}" />
+                            </FlexLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="10">
+                                <Label Text="Rounds" VerticalTextAlignment="Center"/>
+                                <views:NumberSelector CurrentValue="{Binding Source={x:Reference EditView}, Path=BindingContext.RoundCount, Mode=TwoWay}" MinimumValue="0" MaximumValue="60"/>
+                            </FlexLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="10">
+                                <Label Text="Exercises" VerticalTextAlignment="Center"/>
+                                <views:NumberSelector CurrentValue="{Binding Source={x:Reference EditView}, Path=BindingContext.ExerciseCount, Mode=TwoWay}" MinimumValue="0" MaximumValue="60"/>
+                            </FlexLayout>
                         </ViewCell>
                     </TableSection>
                 </TableRoot>

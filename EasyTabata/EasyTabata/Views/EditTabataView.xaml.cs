@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace EasyTabata.Views
@@ -16,9 +17,11 @@ namespace EasyTabata.Views
     public partial class EditTabataView : ContentPage
     {
         public Tabata currentTabata { get; }
+
         public EditTabataView(Tabata tabata)
         {
             currentTabata = tabata.Clone();
+
             BindingContext = currentTabata;
             InitializeComponent();
         }
