@@ -9,44 +9,45 @@
              x:Name="EditView">
     <ContentPage.Content>
         <AbsoluteLayout>
-        <TableView HasUnevenRows="True">
-            <TableRoot>
-                <TableSection>
-                    <EntryCell Label="Title" Placeholder="Title" Text="{Binding Title, Mode=TwoWay}"/>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Preparation" VerticalTextAlignment="Center"/>
-                            <views:TimeSelector TimeValue="{Binding Source={x:Reference EditView}, Path=BindingContext.PreparationLength, Mode=TwoWay}" />
-                        </StackLayout>
-                    </ViewCell>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Number of Rounds" VerticalTextAlignment="Center"/>
-                            <views:NumberSelector CurrentValue="{Binding Source={x:Reference EditView}, Path=BindingContext.RoundCount, Mode=TwoWay}" MinimumValue="0" MaximumValue="60"/>
-                        </StackLayout>
-                    </ViewCell>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Number of Excercises" VerticalTextAlignment="Center"/>
-                            <views:NumberSelector CurrentValue="{Binding Source={x:Reference EditView}, Path=BindingContext.ExerciseCount, Mode=TwoWay}" MinimumValue="0" MaximumValue="60"/>
-                        </StackLayout>
-                    </ViewCell>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Work Duration" VerticalTextAlignment="Center"/>
-                            <views:TimeSelector TimeValue="{Binding Source={x:Reference EditView}, Path=BindingContext.WorkLength, Mode=TwoWay}" />
-                        </StackLayout>
-                    </ViewCell>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Rest Duration" VerticalTextAlignment="Center"/>
-                            <views:TimeSelector TimeValue="{Binding Source={x:Reference EditView}, Path=BindingContext.RestLength, Mode=TwoWay}" />
-                        </StackLayout>
-                    </ViewCell>
-                </TableSection>
-            </TableRoot>
-        </TableView>
-            <ImageButton BackgroundColor="{StaticResource NavigationPrimary}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".95,.95,40,40" Clicked="Save_Clicked" CornerRadius="24" Aspect="AspectFit">
+            <TableView HasUnevenRows="True">
+                <TableRoot>
+                    <TableSection>
+                        <EntryCell Label="Title" Placeholder="Title" Text="{Binding Title, Mode=TwoWay}"/>
+                        <TextCell Text="{Binding CompleteLength, StringFormat='Complete Length: {0}'}" TextColor="Black"/>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Preparation" VerticalTextAlignment="Center"/>
+                                <views:TimeSelector TimeValue="{Binding Source={x:Reference EditView}, Path=BindingContext.PreparationLength, Mode=TwoWay}" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Number of Rounds" VerticalTextAlignment="Center"/>
+                                <views:NumberSelector CurrentValue="{Binding Source={x:Reference EditView}, Path=BindingContext.RoundCount, Mode=TwoWay}" MinimumValue="0" MaximumValue="60"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Number of Excercises" VerticalTextAlignment="Center"/>
+                                <views:NumberSelector CurrentValue="{Binding Source={x:Reference EditView}, Path=BindingContext.ExerciseCount, Mode=TwoWay}" MinimumValue="0" MaximumValue="60"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Work Duration" VerticalTextAlignment="Center"/>
+                                <views:TimeSelector TimeValue="{Binding Source={x:Reference EditView}, Path=BindingContext.WorkLength, Mode=TwoWay}" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Rest Duration" VerticalTextAlignment="Center"/>
+                                <views:TimeSelector TimeValue="{Binding Source={x:Reference EditView}, Path=BindingContext.RestLength, Mode=TwoWay}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            <ImageButton BackgroundColor="{StaticResource NavigationPrimary}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".95,.95,60,60" Clicked="Save_Clicked" CornerRadius="30" Padding="13">
                 <ImageButton.Source>
                     <FontImageSource  Glyph="&#xe161;" FontFamily="MaterialIcons" Size="32" Color="White"/>
                 </ImageButton.Source>

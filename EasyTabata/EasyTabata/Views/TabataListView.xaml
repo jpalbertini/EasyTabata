@@ -7,8 +7,8 @@
              x:Class="EasyTabata.Views.TabataListView"
              x:Name="ContentPage"
              Title="Tabata List">
-    
-    <ListView ItemsSource="{Binding Items}" RowHeight="40">
+
+    <ListView ItemsSource="{Binding Items}" RowHeight="40" Margin="10">
         <d:ListView.ItemsSource>
             <x:Array Type="{x:Type x:String}">
                 <x:String>Item 1</x:String>
@@ -29,16 +29,22 @@
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="16" />
-                            <RowDefinition Height="12"/>
+                            <RowDefinition Height="14"/>
                         </Grid.RowDefinitions>
 
                         <Label Grid.Row="0" Text="{Binding Title}" Style="{DynamicResource ListItemTextStyle}" LineBreakMode="NoWrap" FontSize="18" />
-                        <Label Grid.Row="1" Text="{Binding CompleteLength}" Style="{DynamicResource ListItemTextStyle}" LineBreakMode="NoWrap" FontSize="12" />
+
+                        <StackLayout Grid.Row="1" Margin="10, 0, 0, 0" Orientation="Horizontal">
+                            <Label Text="Complete length: " FontSize="12" />
+                            <Label Text="{Binding CompleteLength}" Style="{DynamicResource ListItemTextStyle}" LineBreakMode="NoWrap" FontSize="12" />
+                        </StackLayout>
+                        
                         <ImageButton Grid.RowSpan="2" Grid.Column="1" BackgroundColor="Transparent" Clicked="EditionButton_Clicked">
                             <ImageButton.Source>
                                 <FontImageSource Glyph="&#xe3c9;" FontFamily="MaterialIcons" Size="32" Color="{StaticResource NavigationPrimary}"/>
                             </ImageButton.Source>
                         </ImageButton>
+                        
                         <ImageButton Grid.RowSpan="2" Grid.Column="2" BackgroundColor="Transparent" Command="{Binding Source={x:Reference ContentPage}, Path=BindingContext.DeleteTabataCommand}" CommandParameter="{Binding ID}">
                             <ImageButton.Source>
                                 <FontImageSource  Glyph="&#xe872;" FontFamily="MaterialIcons" Size="32" Color="{StaticResource NavigationPrimary}"/>

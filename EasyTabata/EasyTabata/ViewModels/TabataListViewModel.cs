@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -32,8 +33,12 @@ namespace EasyTabata.ViewModels
         {
             Items.Clear();
             var storedList = DependencyService.Get<IDataStore>().GetTabatasAsync().Result;
+            storedList = from tbt in storedList
+                         orderby tbt.Title ascending
+                         select tbt;
+
             foreach (var item in storedList)
-                Items.Add(item);
+                Items.Add(item);                
         }
     }
 }
