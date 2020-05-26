@@ -17,6 +17,7 @@ namespace EasyTabata.Models
         public event PropertyChangedEventHandler PropertyChanged;
 
         public State CurrentState { get; private set; }
+        public Duration WholePhaseTime { get; private set; }
         public Duration RemainingTime { get; private set; }
         public int CurrentRoundNumber { get; private set; }
         public int CurrentExerciseNumber { get; private set; }
@@ -36,6 +37,7 @@ namespace EasyTabata.Models
         public CurrentPlayingViewModel(Tabata attached)
         {
             RemainingTime = new Duration();
+            WholePhaseTime = new Duration();
             attachedTabata = attached;
             playTimer = new Timer(1000);
             playTimer.Elapsed += TimerTick;
@@ -59,6 +61,7 @@ namespace EasyTabata.Models
                     {
                         CurrentState = State.Work;
                         RemainingTime.CopyFrom(attachedTabata.WorkLength);
+                        WholePhaseTime.CopyFrom(attachedTabata.WorkLength);
                         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(StateChangedEventName));
                     }
                     break;
@@ -68,6 +71,7 @@ namespace EasyTabata.Models
                         if ((CurrentRoundNumber + 1) == attachedTabata.RoundCount)
                         {
                             RemainingTime.CopyFrom(attachedTabata.RestBetweenRoundLength);
+                            WholePhaseTime.CopyFrom(attachedTabata.RestBetweenRoundLength);
                             CurrentState = State.RestBetweenRound;
                         }
                         else if ((CurrentExerciseNumber + 1) == attachedTabata.ExerciseCount)
@@ -79,6 +83,7 @@ namespace EasyTabata.Models
                         {
                             CurrentState = State.Rest;
                             RemainingTime.CopyFrom(attachedTabata.RestLength);
+                            WholePhaseTime.CopyFrom(attachedTabata.RestLength);
                         }
 
                         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(StateChangedEventName));
@@ -89,6 +94,7 @@ namespace EasyTabata.Models
                     {
                         CurrentRoundNumber++;
                         RemainingTime.CopyFrom(attachedTabata.WorkLength);
+                        WholePhaseTime.CopyFrom(attachedTabata.WorkLength);
                         CurrentState = State.Work;
                         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(StateChangedEventName));
                         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(RoundChangedEventName));
@@ -98,6 +104,7 @@ namespace EasyTabata.Models
                     if (RemainingTime.TotalSeconds == 0)
                     {
                         RemainingTime.CopyFrom(attachedTabata.WorkLength);
+                        WholePhaseTime.CopyFrom(attachedTabata.WorkLength);
                         CurrentExerciseNumber++;
                         CurrentState = State.Work;
 
@@ -116,6 +123,7 @@ namespace EasyTabata.Models
         public void Reset()
         {
             RemainingTime.CopyFrom(attachedTabata.PreparationLength);
+            WholePhaseTime.CopyFrom(attachedTabata.PreparationLength);
             CurrentState = State.Preparation;
             CurrentRoundNumber = 0;
             CurrentExerciseNumber = 0;

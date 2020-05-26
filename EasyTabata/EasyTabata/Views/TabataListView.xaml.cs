@@ -32,6 +32,11 @@ namespace EasyTabata.Views
             await Navigation.PushAsync(secondPage);
         }
 
+        private async void Settings_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SettingsView());
+        }
+
         public void OnAppearing(object sender, EventArgs e)
         {
             viewModel.updateItems();

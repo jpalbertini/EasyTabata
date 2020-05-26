@@ -51,6 +51,13 @@ namespace EasyTabata.Views
         }
         public static readonly BindableProperty CurrentExerciseProperty = BindableProperty.Create("CurrentExercise", typeof(int), typeof(PlayingTabataView));
 
+        public double CurrentProgress
+        {
+            get { return (double)GetValue(CurrentProgressProperty); }
+            set { SetValue(CurrentProgressProperty, value); }
+        }
+        public static readonly BindableProperty CurrentProgressProperty = BindableProperty.Create("CurrentProgress", typeof(double), typeof(PlayingTabataView));
+
         public PlayingTabataView()
         {
             BindingContext = this;
@@ -89,6 +96,7 @@ namespace EasyTabata.Views
         private void Sync()
         {
             RemainingTime = playingState.RemainingTime.TotalSeconds;
+            CurrentProgress = 1.0f - ((playingState.WholePhaseTime.TotalSeconds - playingState.RemainingTime.TotalSeconds) / (double)playingState.WholePhaseTime.TotalSeconds);
             CurrentState = playingState.CurrentState;
             CurrentRound = playingState.CurrentRoundNumber;
             CurrentExercise = playingState.CurrentExerciseNumber;

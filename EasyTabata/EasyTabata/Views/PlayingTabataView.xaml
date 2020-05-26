@@ -7,12 +7,13 @@
              x:Class="EasyTabata.Views.PlayingTabataView"
              x:Name="PlayingView">
   <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Margin="10">
+            <ProgressBar Progress="{Binding CurrentProgress}"/>
             <Label Text="{Binding RemainingTime}"/>
             <Label Text="{Binding CurrentState}"/>
             <Label Text="{Binding CurrentRound}"/>
             <Label Text="{Binding CurrentExercise}"/>
-            <FlexLayout Direction="Row">
+            <FlexLayout Direction="Row" AlignContent="SpaceBetween">
                 <Button Text="Play" Clicked="Play_Clicked" />
                 <Button Text="Stop" Clicked="Stop_Clicked" />
                 <Button Text="Reset" Clicked="Reset_Clicked" />

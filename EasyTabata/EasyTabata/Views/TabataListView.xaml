@@ -8,6 +8,14 @@
              x:Name="ContentPage"
              Title="Tabata List">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Settings" Clicked="Settings_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource Glyph="&#xe8b8;" FontFamily="MaterialIcons" Size="32" Color="White"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
     <ListView ItemsSource="{Binding Items}" RowHeight="40" Margin="10" ItemSelected="ListView_ItemSelected">
         <d:ListView.ItemsSource>
             <x:Array Type="{x:Type x:String}">
