@@ -2,22 +2,75 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:views="clr-namespace:EasyTabata.Views"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:plugin="clr-namespace:ProgressRingControl.Forms.Plugin;assembly=ProgressRing.Forms.Plugin" xmlns:converters="clr-namespace:EasyTabata.Converters" xmlns:views="clr-namespace:EasyTabata.Views"
              mc:Ignorable="d"
              x:Class="EasyTabata.Views.PlayingTabataView"
-             x:Name="PlayingView">
+             x:Name="PlayingView"
+             BackgroundColor="{Binding BgColor}"
+             >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NotBoolConverter x:Key="NotBoolConverter" />
+            <converters:DurationToStringConverter x:Key="DurationToStringConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
   <ContentPage.Content>
-        <StackLayout Margin="10">
-            <ProgressBar Progress="{Binding CurrentProgress}"/>
-            <Label Text="{Binding RemainingTime}"/>
-            <Label Text="{Binding CurrentState}"/>
-            <Label Text="{Binding CurrentRound}"/>
-            <Label Text="{Binding CurrentExercise}"/>
-            <FlexLayout Direction="Row" AlignContent="SpaceBetween">
-                <Button Text="Play" Clicked="Play_Clicked" />
-                <Button Text="Stop" Clicked="Stop_Clicked" />
-                <Button Text="Reset" Clicked="Reset_Clicked" />
-            </FlexLayout>
-        </StackLayout>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <AbsoluteLayout Grid.Row="0" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Label TextColor="{StaticResource NavigationPrimary}" Text="{Binding CurrentState}"
+                                     AbsoluteLayout.LayoutBounds="0.5, 0" AbsoluteLayout.LayoutFlags="PositionProportional"
+                       FontSize="35" HorizontalTextAlignment="Center"/>
+                <plugin:ProgressRing ProgressColor="{Binding ProgressColor}" RingBaseColor="LightGray" Progress="{Binding CurrentProgress}" RingThickness="30"
+                                     AbsoluteLayout.LayoutBounds="0.1, 0.1, 1, 1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Transparent" Visual="Material"/>
+                <Label TextColor="{StaticResource NavigationPrimary}" Text="{Binding RemainingPhaseTime}"
+                                     AbsoluteLayout.LayoutBounds="0.5, 0.5" AbsoluteLayout.LayoutFlags="PositionProportional"
+                       FontSize="200" HorizontalTextAlignment="Center"/>
+            </AbsoluteLayout>
+
+            <views:CountView Grid.Row="1" Grid.Column="0" ValueName="Round" 
+                             BoxColor="{Binding Source={x:Reference PlayingView}, Path=BindingContext.BoxColor}"
+                             CurrentValue="{Binding Source={x:Reference PlayingView}, Path=BindingContext.CurrentRound}"
+                             MaxValue="{Binding Source={x:Reference PlayingView}, Path=BindingContext.TotalRound}"/>
+
+            <views:CountView Grid.Row="1" Grid.Column="1" ValueName="Exercice"                             
+                             BoxColor="{Binding Source={x:Reference PlayingView}, Path=BindingContext.BoxColor}"
+                             CurrentValue="{Binding Source={x:Reference PlayingView}, Path=BindingContext.CurrentExercise}"
+                             MaxValue="{Binding Source={x:Reference PlayingView}, Path=BindingContext.TotalExercise}"/>
+
+            <Label Grid.Row="2" Grid.ColumnSpan="2"
+                   FontSize="25" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   Text="{Binding Source={x:Reference PlayingView}, Path=BindingContext.RemainingTime, StringFormat='Remaining: {0}'}"/>
+
+            <ImageButton Grid.Row="3" Grid.Column="0" BackgroundColor="Transparent" Clicked="Play_Clicked" IsVisible="{Binding IsPlaying}">
+                <ImageButton.Source>
+                    <FontImageSource  Glyph="&#xe036;" FontFamily="MaterialIcons" Size="32" Color="{StaticResource NavigationPrimary}" />
+                </ImageButton.Source>
+            </ImageButton>
+
+            <ImageButton Grid.Row="3" Grid.Column="0" BackgroundColor="Transparent" Clicked="Play_Clicked" IsVisible="{Binding IsPlaying, Converter={StaticResource NotBoolConverter}}">
+                <ImageButton.Source>
+                    <FontImageSource  Glyph="&#xe039;" FontFamily="MaterialIcons" Size="32" Color="{StaticResource NavigationPrimary}" />
+                </ImageButton.Source>
+            </ImageButton>
+
+            <ImageButton Grid.Row="3" Grid.Column="1" BackgroundColor="Transparent" Clicked="Reset_Clicked">
+                <ImageButton.Source>
+                    <FontImageSource  Glyph="&#xe042;" FontFamily="MaterialIcons" Size="16" Color="{StaticResource NavigationPrimary}"/>
+                </ImageButton.Source>
+            </ImageButton>
+        </Grid>
   </ContentPage.Content>
 </ContentPage>

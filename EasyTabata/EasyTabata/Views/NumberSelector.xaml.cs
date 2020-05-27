@@ -38,6 +38,12 @@ namespace EasyTabata.Views
             set { SetValue(EditableProperty, value); }
         }
         public static readonly BindableProperty EditableProperty = BindableProperty.Create("Editable", typeof(bool), typeof(NumberSelector), true);
+        public int FontSize
+        {
+            get { return (int)GetValue(FontSizeProperty); }
+            set { SetValue(FontSizeProperty, value); }
+        }
+        public static readonly BindableProperty FontSizeProperty = BindableProperty.Create("FontSize", typeof(int), typeof(TimeSelector), 12);
 
         public NumberSelector()
         {

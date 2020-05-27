@@ -19,13 +19,13 @@ namespace EasyTabata.Models
         public int RoundCount { get; set; }
         public int ExerciseCount { get; set; }
 
-        public String CompleteLength
+        public Duration CompleteLength
         { 
             get {
                 var exerciseLength = (RoundCount * WorkLength.TotalSeconds) + ((RoundCount - 1) * RestLength.TotalSeconds);
                 var duration = Duration.FromSeconds(exerciseLength * ExerciseCount) + Duration.FromSeconds(RestBetweenRoundLength.TotalSeconds * (ExerciseCount - 1));
-                return (PreparationLength + duration).ToString();
-            } 
+                return (PreparationLength + duration);
+            }
         }
 
         public Tabata()

@@ -8,8 +8,8 @@
              x:Class="EasyTabata.Views.TimeSelector"
              Orientation="Horizontal"
              x:Name="TimeSelect">
-    <views:NumberSelector CurrentValue="{Binding Source={x:Reference TimeSelect}, Path=BindingContext.TimeValue.Minutes, Mode=TwoWay}" MinimumValue="0" MaximumValue="60" Editable="{Binding Source={x:Reference TimeSelect}, Path=BindingContext.Editable}"/>
-    <Label Text="min" VerticalTextAlignment="Center"/>
-    <views:NumberSelector CurrentValue="{Binding Source={x:Reference TimeSelect}, Path=BindingContext.TimeValue.Seconds, Mode=TwoWay}" MinimumValue="0" MaximumValue="59" Editable="{Binding Source={x:Reference TimeSelect}, Path=BindingContext.Editable}"/>
-    <Label Text="secs" VerticalTextAlignment="Center"/>
+    <views:NumberSelector CurrentValue="{Binding Source={x:Reference TimeSelect}, Path=BindingContext.TimeValue.Minutes, Mode=TwoWay}" MinimumValue="0" MaximumValue="60" Editable="{Binding Source={x:Reference TimeSelect}, Path=BindingContext.Editable}" FontSize="{Binding Source={x:Reference TimeSelect}, Path=BindingContext.FontSize}"/>
+    <Label Text="min" VerticalTextAlignment="Center" FontSize="{Binding Source={x:Reference TimeSelect}, Path=BindingContext.FontSize}"/>
+    <views:NumberSelector CurrentValue="{Binding Source={x:Reference TimeSelect}, Path=BindingContext.TimeValue.Seconds, Mode=TwoWay}" MinimumValue="0" MaximumValue="59" Editable="{Binding Source={x:Reference TimeSelect}, Path=BindingContext.Editable}" FontSize="{Binding Source={x:Reference TimeSelect}, Path=BindingContext.FontSize}"/>
+    <Label Text="secs" VerticalTextAlignment="Center" FontSize="{Binding Source={x:Reference TimeSelect}, Path=BindingContext.FontSize}"/>
 </StackLayout>

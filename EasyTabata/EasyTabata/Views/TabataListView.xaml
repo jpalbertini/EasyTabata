@@ -3,11 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:EasyTabata.Converters"
              mc:Ignorable="d"
              x:Class="EasyTabata.Views.TabataListView"
              x:Name="ContentPage"
              Title="Tabata List">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:DurationToStringConverter x:Key="DurationToStringConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Settings" Clicked="Settings_Clicked">
             <ToolbarItem.IconImageSource>
@@ -44,7 +51,7 @@
 
                         <StackLayout Grid.Row="1" Margin="10, 0, 0, 0" Orientation="Horizontal">
                             <Label Text="Complete length: " FontSize="12" />
-                            <Label Text="{Binding CompleteLength}" Style="{DynamicResource ListItemTextStyle}" LineBreakMode="NoWrap" FontSize="12" />
+                            <Label Text="{Binding CompleteLength, Converter={StaticResource DurationToStringConverter}}" Style="{DynamicResource ListItemTextStyle}" LineBreakMode="NoWrap" FontSize="12" />
                         </StackLayout>
                         
                         <ImageButton Grid.RowSpan="2" Grid.Column="1" BackgroundColor="Transparent" Clicked="EditionButton_Clicked">

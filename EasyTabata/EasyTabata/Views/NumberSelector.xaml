@@ -13,7 +13,7 @@
         </ImageButton.Source>
     </ImageButton>
     
-    <Label Text="{Binding Source={x:Reference NbSelector}, Path=BindingContext.CurrentValue}" HorizontalTextAlignment="Center"/>
+    <Label Text="{Binding Source={x:Reference NbSelector}, Path=BindingContext.CurrentValue}" HorizontalTextAlignment="Center" FontSize="{Binding FontSize}"/>
 
     <ImageButton BackgroundColor="Transparent" Clicked="Minus_Clicked" IsVisible="{Binding Editable}">
         <ImageButton.Source>

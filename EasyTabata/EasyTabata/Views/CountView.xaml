@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<AbsoluteLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="EasyTabata.Views.CountView">
+    <BoxView AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" Color="{Binding BoxColor}" CornerRadius="15"/>
+    <Label Text="{Binding ValueName}" AbsoluteLayout.LayoutBounds="0.5, 0.05" AbsoluteLayout.LayoutFlags="PositionProportional" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" FontSize="25" />
+    <Label Text="{Binding CurrentValue}" FontSize="75" AbsoluteLayout.LayoutBounds="0.25, 0.5" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+    <Label Text="/" FontSize="75" AbsoluteLayout.LayoutBounds="0.5, 0.5" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+    <Label Text="{Binding MaxValue}" FontSize="75" AbsoluteLayout.LayoutBounds="0.75, 0.5" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+</AbsoluteLayout>

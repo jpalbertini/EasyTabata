@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Essentials;
 
 namespace EasyTabata.Models
 {
@@ -39,6 +40,17 @@ namespace EasyTabata.Models
         {
             return new Duration(seconds / 60, seconds % 60);
         }
+        static public Duration FromString(string str)
+        {
+            int min = 0, secs = 0;
+            var splits = str.Split(':');
+            if (splits.Length > 0)
+                min = int.Parse(splits[0]);
+            if (splits.Length > 1)
+                secs = int.Parse(splits[1]);
+
+            return new Duration(min, secs);
+        }
         public static Duration operator +(Duration lhs, Duration rhs)
         {
             return Duration.FromSeconds(lhs.TotalSeconds + rhs.TotalSeconds);
@@ -66,7 +78,7 @@ namespace EasyTabata.Models
 
         public override string ToString()
         {
-            return $"{Minutes}:{Seconds}";
+            return String.Format("{0} mins {1} secs", Minutes, Seconds);
         }
 
         public void CopyFrom(Duration other)
