@@ -54,19 +54,19 @@
                    FontSize="25" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
                    Text="{Binding Source={x:Reference PlayingView}, Path=BindingContext.RemainingTime, StringFormat='Remaining: {0}'}"/>
 
-            <ImageButton Grid.Row="3" Grid.Column="0" BackgroundColor="Transparent" Clicked="Play_Clicked" IsVisible="{Binding IsPlaying}">
+            <ImageButton Grid.Row="3" Grid.Column="0" BackgroundColor="Transparent" Clicked="Play_Clicked" IsVisible="{Binding IsPlaying}" Visual="Material">
                 <ImageButton.Source>
-                    <FontImageSource  Glyph="&#xe036;" FontFamily="MaterialIcons" Size="32" Color="{StaticResource NavigationPrimary}" />
+                    <FontImageSource  Glyph="&#xe036;" FontFamily="MaterialIcons" Size="32" Color="Red" />
                 </ImageButton.Source>
             </ImageButton>
 
-            <ImageButton Grid.Row="3" Grid.Column="0" BackgroundColor="Transparent" Clicked="Play_Clicked" IsVisible="{Binding IsPlaying, Converter={StaticResource NotBoolConverter}}">
+            <ImageButton Grid.Row="3" Grid.Column="0" BackgroundColor="Transparent" Clicked="Play_Clicked" IsVisible="{Binding IsPlaying, Converter={StaticResource NotBoolConverter}}" Visual="Material">
                 <ImageButton.Source>
-                    <FontImageSource  Glyph="&#xe039;" FontFamily="MaterialIcons" Size="32" Color="{StaticResource NavigationPrimary}" />
+                    <FontImageSource  Glyph="&#xe039;" FontFamily="MaterialIcons" Size="32" Color="Green" />
                 </ImageButton.Source>
             </ImageButton>
 
-            <ImageButton Grid.Row="3" Grid.Column="1" BackgroundColor="Transparent" Clicked="Reset_Clicked">
+            <ImageButton Grid.Row="3" Grid.Column="1" BackgroundColor="Transparent" Clicked="Reset_Clicked" Visual="Material">
                 <ImageButton.Source>
                     <FontImageSource  Glyph="&#xe042;" FontFamily="MaterialIcons" Size="16" Color="{StaticResource NavigationPrimary}"/>
                 </ImageButton.Source>

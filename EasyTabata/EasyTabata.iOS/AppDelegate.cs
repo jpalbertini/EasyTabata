@@ -24,6 +24,8 @@ namespace EasyTabata.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            global::Xamarin.Forms.FormsMaterial.Init();
+            XF.Material.iOS.Material.Init();
 
             ProgressRingRenderer.Init();
             LoadApplication(new App());

@@ -23,7 +23,7 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
 
-    <ListView ItemsSource="{Binding Items}" RowHeight="40" Margin="10" ItemSelected="ListView_ItemSelected">
+    <ListView ItemsSource="{Binding Items}" RowHeight="40" Margin="10" ItemSelected="ListView_ItemSelected" Visual="Material">
         <d:ListView.ItemsSource>
             <x:Array Type="{x:Type x:String}">
                 <x:String>Item 1</x:String>
@@ -53,14 +53,14 @@
                             <Label Text="Complete length: " FontSize="12" />
                             <Label Text="{Binding CompleteLength, Converter={StaticResource DurationToStringConverter}}" Style="{DynamicResource ListItemTextStyle}" LineBreakMode="NoWrap" FontSize="12" />
                         </StackLayout>
-                        
-                        <ImageButton Grid.RowSpan="2" Grid.Column="1" BackgroundColor="Transparent" Clicked="EditionButton_Clicked">
+
+                        <ImageButton Grid.RowSpan="2" Grid.Column="1" BackgroundColor="Transparent" Clicked="EditionButton_Clicked" Visual="Material">
                             <ImageButton.Source>
                                 <FontImageSource Glyph="&#xe3c9;" FontFamily="MaterialIcons" Size="32" Color="{StaticResource NavigationPrimary}"/>
                             </ImageButton.Source>
                         </ImageButton>
-                        
-                        <ImageButton Grid.RowSpan="2" Grid.Column="2" BackgroundColor="Transparent" Command="{Binding Source={x:Reference ContentPage}, Path=BindingContext.DeleteTabataCommand}" CommandParameter="{Binding ID}">
+
+                        <ImageButton Grid.RowSpan="2" Grid.Column="2" BackgroundColor="Transparent" Command="{Binding Source={x:Reference ContentPage}, Path=BindingContext.DeleteTabataCommand}" CommandParameter="{Binding ID}" Visual="Material">
                             <ImageButton.Source>
                                 <FontImageSource  Glyph="&#xe872;" FontFamily="MaterialIcons" Size="32" Color="{StaticResource NavigationPrimary}"/>
                             </ImageButton.Source>

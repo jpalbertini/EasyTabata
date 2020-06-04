@@ -16,18 +16,35 @@ namespace EasyTabata.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditTabataView : ContentPage
     {
-        public Tabata currentTabata { get; }
+        public Tabata CurrentTabata { get; }
+
+        public Duration TemporaryLength
+        {
+            get { return (Duration)GetValue(TemporaryLengthProperty); }
+            set { SetValue(TemporaryLengthProperty, value); }
+        }
+        public static readonly BindableProperty TemporaryLengthProperty = BindableProperty.Create("TemporaryLength", typeof(Duration), typeof(EditTabataView));
 
         public EditTabataView(Tabata tabata)
         {
-            currentTabata = tabata.Clone();
+            CurrentTabata = tabata.Clone();
+            TemporaryLength = CurrentTabata.CompleteLength;
 
-            BindingContext = currentTabata;
+            CurrentTabata.PropertyChanged += CurrentTabata_PropertyChanged;
+
+            BindingContext = CurrentTabata;
             InitializeComponent();
         }
+
+        private void CurrentTabata_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "CompleteLength")
+                TemporaryLength = (sender as Tabata).CompleteLength;
+        }
+
         private async void Save_Clicked(object sender, EventArgs e)
         {
-            if (!DependencyService.Get<IDataStore>().UpdateTabataAsync(currentTabata).Result)
+            if (!DependencyService.Get<IDataStore>().UpdateTabataAsync(CurrentTabata).Result)
                 Debug.Fail("Could not update");
             else
                 await Navigation.PopAsync();

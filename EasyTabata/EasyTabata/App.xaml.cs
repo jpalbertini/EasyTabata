@@ -10,6 +10,7 @@ namespace EasyTabata
         public App()
         {
             InitializeComponent();
+            XF.Material.Forms.Material.Init(this);
 
             DependencyService.Register<MockDataStore>();
             MainPage = new NavigationPage(new TabataListView());

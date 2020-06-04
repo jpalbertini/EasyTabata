@@ -1,6 +1,8 @@
-﻿using System;
+﻿using EasyTabata.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -55,11 +57,36 @@ namespace EasyTabata.Views
         {
             if (CurrentValue < MaximumValue)
                 CurrentValue++;
+            UpdateParentTabata();
         }
         private void Minus_Clicked(object sender, EventArgs e)
         {
             if (CurrentValue > MinimumValue)
                 CurrentValue--;
+            UpdateParentTabata();
+        }
+
+        private void UpdateParentTabata()
+        {
+            UpdateParentTabata(Parent);
+        }
+
+        private void UpdateParentTabata(Element parent)
+        {
+            Type myType = parent.GetType();
+            IList<PropertyInfo> props = new List<PropertyInfo>(myType.GetProperties());
+            foreach (PropertyInfo prop in props)
+            {
+                if(prop.PropertyType == typeof(Tabata))
+                {
+                    Tabata tabata = prop.GetValue(parent, null) as Tabata;
+                    if (tabata != null)
+                        tabata.UpdateDuration();
+                }
+            }
+
+            if(parent.Parent != null)
+                UpdateParentTabata(parent.Parent);
         }
     }
 }

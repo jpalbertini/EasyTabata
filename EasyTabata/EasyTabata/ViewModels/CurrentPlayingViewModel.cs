@@ -72,10 +72,13 @@ namespace EasyTabata.Models
                         WholePhaseTime.CopyFrom(attachedTabata.WorkLength);
                         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(StateChangedEventName));
                     }
+                    else if (RemainingPhaseTime.TotalSeconds == 3)
+                        AudioHelper.PlayStarting();
                     break;
                 case State.Work:
                     if (RemainingPhaseTime.TotalSeconds == 0)
                     {
+                        AudioHelper.PlayFinishBell();
                         if ((CurrentRoundNumber) == attachedTabata.RoundCount)
                         {
                             RemainingPhaseTime.CopyFrom(attachedTabata.RestBetweenRoundLength);
@@ -96,6 +99,10 @@ namespace EasyTabata.Models
 
                         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(StateChangedEventName));
                     }
+
+                    if (RemainingPhaseTime.TotalSeconds < 5)
+                        AudioHelper.PlayAlmostFinishBell();
+
                     break;
                 case State.Rest:
                     if (RemainingPhaseTime.TotalSeconds == 0)
