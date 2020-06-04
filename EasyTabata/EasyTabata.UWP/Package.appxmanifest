@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="48d10cf8-55f6-4f58-b0db-7a524602c59c"
-    Publisher="CN=45e4b6e5-30d5-4da6-b02d-624a0cdce376"
+    Name="33668jpalbertini.EasyTabata"
+    Publisher="CN=2E649A00-6D88-422C-9AC0-5014C39CDC20"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="4cadcbc6-9a27-4cb6-95c8-995802f673a8" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>EasyTabata.UWP</DisplayName>
-    <PublisherDisplayName>45e4b6e5-30d5-4da6-b02d-624a0cdce376</PublisherDisplayName>
+    <DisplayName>Easy Tabata</DisplayName>
+    <PublisherDisplayName>jpalbertini</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -32,7 +32,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="EasyTabata.UWP.App">
       <uap:VisualElements
-        DisplayName="EasyTabata.UWP"
+        DisplayName="Easy Tabata"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="EasyTabata.UWP"
