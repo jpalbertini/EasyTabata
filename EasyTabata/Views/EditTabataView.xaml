@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:EasyTabata.Views" xmlns:converters="clr-namespace:EasyTabata.Converters"
+             mc:Ignorable="d"
+             x:Class="EasyTabata.Views.EditTabataView"
+             x:Name="EditView"
+             Title="Tabata Edition">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:DurationToStringConverter x:Key="DurationToStringConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <TableView HasUnevenRows="True">
+                <TableRoot>
+                    <TableSection>
+                        <EntryCell Label="Title" Placeholder="Title" Text="{Binding Title, Mode=TwoWay}"/>
+                        <TextCell TextColor="Gray" Text="{Binding Source={x:Reference EditView}, Path=TemporaryLength, StringFormat='Complete Duration: {0}', Converter={StaticResource DurationToStringConverter}}"/>
+                        <ViewCell>
+                            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="10">
+                                <Label Text="Preparation" VerticalTextAlignment="Center"/>
+                                <views:TimeSelector TimeValue="{Binding Source={x:Reference EditView}, Path=BindingContext.PreparationLength, Mode=TwoWay}"/>
+                            </FlexLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="10">
+                                <Label Text="Work Duration" VerticalTextAlignment="Center"/>
+                                <views:TimeSelector TimeValue="{Binding Source={x:Reference EditView}, Path=BindingContext.WorkLength, Mode=TwoWay}" />
+                            </FlexLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="10">
+                                <Label Text="Rest Duration" VerticalTextAlignment="Center"/>
+                                <views:TimeSelector TimeValue="{Binding Source={x:Reference EditView}, Path=BindingContext.RestLength, Mode=TwoWay}" />
+                            </FlexLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="10">
+                                <Label Text="Rest between rounds" VerticalTextAlignment="Center"/>
+                                <views:TimeSelector TimeValue="{Binding Source={x:Reference EditView}, Path=BindingContext.RestBetweenRoundLength, Mode=TwoWay}" />
+                            </FlexLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="10">
+                                <Label Text="Rounds" VerticalTextAlignment="Center"/>
+                                <views:NumberSelector CurrentValue="{Binding Source={x:Reference EditView}, Path=BindingContext.RoundCount, Mode=TwoWay}" MinimumValue="1" MaximumValue="60"/>
+                            </FlexLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="10">
+                                <Label Text="Exercises" VerticalTextAlignment="Center"/>
+                                <views:NumberSelector CurrentValue="{Binding Source={x:Reference EditView}, Path=BindingContext.ExerciseCount, Mode=TwoWay}" MinimumValue="1" MaximumValue="60"/>
+                            </FlexLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            <ImageButton Visual="Material" BackgroundColor="{StaticResource Primary}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".95,.95,60,60" Clicked="Save_Clicked" CornerRadius="30" Padding="13">
+                <ImageButton.Source>
+                    <FontImageSource  Glyph="&#xe161;" FontFamily="MaterialIcons" Size="32" Color="White"/>
+                </ImageButton.Source>
+            </ImageButton>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

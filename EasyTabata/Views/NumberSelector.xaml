@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="EasyTabata.Views.NumberSelector"
+             x:Name="NbSelector">
+
+    <ImageButton BackgroundColor="Transparent" Clicked="Plus_Clicked" IsVisible="{Binding Editable}" Visual="Material">
+        <ImageButton.Source>
+            <FontImageSource  Glyph="&#xe148;" FontFamily="MaterialIcons" Size="32" Color="{StaticResource Primary}"/>
+        </ImageButton.Source>
+    </ImageButton>
+    
+    <Label Text="{Binding Source={x:Reference NbSelector}, Path=BindingContext.CurrentValue}" HorizontalTextAlignment="Center" FontSize="{Binding FontSize}"/>
+
+    <ImageButton BackgroundColor="Transparent" Clicked="Minus_Clicked" IsVisible="{Binding Editable}" Visual="Material">
+        <ImageButton.Source>
+            <FontImageSource  Glyph="&#xe15d;" FontFamily="MaterialIcons" Size="32" Color="{StaticResource Primary}"/>
+        </ImageButton.Source>
+    </ImageButton>
+    
+</StackLayout>

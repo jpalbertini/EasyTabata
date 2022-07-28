@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:EasyTabata.Converters"
+             x:Class="EasyTabata.Views.TabataListView"
+             Title="Tabata List">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:DurationToStringConverter x:Key="DurationToStringConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Settings" Clicked="Settings_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource Glyph="&#xe8b8;" FontFamily="MaterialIcons" Size="32" Color="White"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <AbsoluteLayout>
+        <!--<ListView ItemsSource="{Binding Items}" RowHeight="60" ItemSelected="ListView_ItemSelected" Visual="Material" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,.98,.98" >
+            --><!--<d:ListView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Item 1</x:String>
+                    <x:String>Item 2</x:String>
+                    <x:String>Item 3</x:String>
+                    <x:String>Item 4</x:String>
+                    <x:String>Item 5</x:String>
+                </x:Array>
+            </d:ListView.ItemsSource>--><!--
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                            <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                                <Label Text="{Binding Title}" Style="{DynamicResource ListItemTextStyle}" LineBreakMode="NoWrap" FontSize="18" />
+                                <StackLayout Margin="10, 0, 0, 0" Orientation="Horizontal">
+                                    <Label Text="Complete length: " FontSize="12" />
+                                    <Label Text="{Binding CompleteLength, Converter={StaticResource DurationToStringConverter}}" Style="{DynamicResource ListItemTextStyle}" LineBreakMode="NoWrap" FontSize="12" />
+                                </StackLayout>
+                            </StackLayout>
+
+                            <ImageButton BackgroundColor="Transparent" Clicked="EditionButton_Clicked" Visual="Material">
+                                <ImageButton.Source>
+                                    <FontImageSource Glyph="&#xe3c9;" FontFamily="MaterialIcons" Size="32" Color="{StaticResource Primary}"/>
+                                </ImageButton.Source>
+                            </ImageButton>
+
+                            <ImageButton BackgroundColor="Transparent" Command="{Binding Source={x:Reference ContentPage}, Path=BindingContext.DeleteTabataCommand}" CommandParameter="{Binding ID}" Visual="Material">
+                                <ImageButton.Source>
+                                    <FontImageSource  Glyph="&#xe872;" FontFamily="MaterialIcons" Size="32" Color="{StaticResource Primary}"/>
+                                </ImageButton.Source>
+                            </ImageButton>
+
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+        <ImageButton Visual="Material" BackgroundColor="{StaticResource Primary}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".95,.95,60,60" Clicked="Add_Clicked" CornerRadius="30" Padding="13">
+            <ImageButton.Source>
+                <FontImageSource  Glyph="&#xe145;" FontFamily="MaterialIcons" Size="32" Color="White"/>
+            </ImageButton.Source>
+        </ImageButton>
+    </AbsoluteLayout>
+</ContentPage>
